@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  # Orthanc PACS 服务器
+  # Orthanc PACS server
   orthanc:
     image: jodogne/orthanc-plugins
     container_name: orthanc_server
     volumes:
-      # 配置
+      # Configuration
       - ./config/orthanc.json:/etc/orthanc/orthanc.json:ro
-      # 数据持久化
+      # Persistent storage
       - ./volumes/orthanc-db/:/var/lib/orthanc/db/
     restart: unless-stopped
     ports:
-      - '4242:4242' # Orthanc DICOM 端口
-      - '8042:8042' # Orthanc HTTP 端口 
+      - '4242:4242' # Orthanc DICOM port
+      - '8042:8042' # Orthanc HTTP port
